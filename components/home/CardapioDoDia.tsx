@@ -7,23 +7,28 @@ export default function CardapioDoDia() {
   const [cardapio, setCardapio] = useState<any>(null)
 
   useEffect(() => {
+    // Esse foguetinho TEM que aparecer no F12!
+    console.log("🚀 STARTING CLIENT FETCH...") 
+
     async function buscarCardapio() {
-      const supabase = createClient()
-      
-      // O truque do '*' evita que o banco quebre se faltar alguma coluna
-      const { data, error } = await supabase
-        .from('cardapio_dia')
-        .select('*')
-        .limit(1)
-        .maybeSingle()
+      try {
+        const supabase = createClient()
+        console.log("URL DO BCO:", process.env.NEXT_PUBLIC_SUPABASE_URL)
+        
+        const { data, error } = await supabase
+          .from('cardapio_dia')
+          .select('*')
+          .limit(1)
+          .maybeSingle()
 
-      if (error) {
-        // Se o problema for segurança (RLS), isso vai aparecer no seu F12!
-        console.error("ERRO DO SUPABASE:", error.message)
-      }
+        console.log("DADOS DO BIFE:", data)
+        if (error) console.error("ERRO DE BUSCA:", error)
 
-      if (data) {
-        setCardapio(data)
+        if (data) {
+          setCardapio(data)
+        }
+      } catch (err) {
+        console.error("ERRO FATAL DE CONEXÃO:", err)
       }
     }
 
