@@ -5,15 +5,14 @@ import { createClient } from '@/lib/supabase/client'
 
 export default function CardapioDoDia() {
   const [cardapio, setCardapio] = useState<any>(null)
+  const [carregando, setCarregando] = useState(true)
 
   useEffect(() => {
-    // Esse foguetinho TEM que aparecer no F12!
-    console.log("🚀 STARTING CLIENT FETCH...") 
+    console.log("🚀 AGORA O FOGUETE VAI SUBIR!")
 
     async function buscarCardapio() {
       try {
         const supabase = createClient()
-        console.log("URL DO BCO:", process.env.NEXT_PUBLIC_SUPABASE_URL)
         
         const { data, error } = await supabase
           .from('cardapio_dia')
@@ -21,14 +20,16 @@ export default function CardapioDoDia() {
           .limit(1)
           .maybeSingle()
 
-        console.log("DADOS DO BIFE:", data)
-        if (error) console.error("ERRO DE BUSCA:", error)
+        console.log("DADOS RETORNADOS:", data)
+        if (error) console.error("ERRO:", error)
 
         if (data) {
           setCardapio(data)
         }
       } catch (err) {
-        console.error("ERRO FATAL DE CONEXÃO:", err)
+        console.error("ERRO FATAL:", err)
+      } finally {
+        setCarregando(false)
       }
     }
 
@@ -44,7 +45,11 @@ export default function CardapioDoDia() {
         
         <div className="max-w-md mx-auto bg-stone-50 rounded-2xl overflow-hidden shadow-lg border border-stone-200">
           
-          {cardapio?.foto_url ? (
+          {carregando ? (
+            <div className="w-full h-64 bg-stone-200 flex items-center justify-center animate-pulse">
+              <span className="text-stone-500 font-medium">Carregando cardápio...</span>
+            </div>
+          ) : cardapio?.foto_url ? (
             <img 
               src={cardapio.foto_url} 
               alt={cardapio.nome_prato} 
@@ -52,13 +57,13 @@ export default function CardapioDoDia() {
             />
           ) : (
             <div className="w-full h-64 bg-stone-200 flex items-center justify-center">
-              <span className="text-stone-500">Foto em atualização...</span>
+              <span className="text-stone-500">Nenhum prato cadastrado para hoje.</span>
             </div>
           )}
           
           <div className="p-6 text-center">
             <h3 className="text-2xl font-semibold text-terracota-700 mb-4 font-serif">
-              {cardapio?.nome_prato || 'Cardápio em atualização...'}
+              {carregando ? 'Buscando...' : (cardapio?.nome_prato || 'Cardápio em atualização...')}
             </h3>
             
             {/* Bloco de Preços Principais */}
