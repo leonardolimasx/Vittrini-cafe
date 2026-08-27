@@ -6,9 +6,11 @@ import { createClient } from '@/lib/supabase/client'
 
 export default function AdminPage() {
   const router = useRouter()
-  const supabase = createClient()
 
   useEffect(() => {
+    // Inicializa o Supabase apenas no navegador, evitando erros no build da Vercel
+    const supabase = createClient()
+
     async function verificarAutenticacao() {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) {
@@ -16,7 +18,7 @@ export default function AdminPage() {
       }
     }
     verificarAutenticacao()
-  }, [router, supabase])
+  }, [router])
 
   return (
     <div className="min-h-screen bg-gray-50 p-8">
