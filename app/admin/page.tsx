@@ -8,7 +8,7 @@ export default function AdminPage() {
   const router = useRouter()
 
   useEffect(() => {
-    // Inicializa o Supabase apenas no navegador, evitando erros no build da Vercel
+    // FORÇANDO ATUALIZAÇÃO DE CACHE NO GITHUB E VERCEL
     const supabase = createClient()
 
     async function verificarAutenticacao() {
