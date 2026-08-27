@@ -1,26 +1,12 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@theme {
+  /* Tons de Verde Água / Paleta Sertão */
+  --color-terracota-50: #F0F5F5;
+  --color-terracota-100: #DBEBEA;
+  --color-terracota-300: #8CBBBA;
+  --color-terracota-500: #468785; /* A cor do meio da foto! */
+  --color-terracota-600: #386A68;
+  --color-terracota-700: #2C5251;
+  --color-terracota-800: #1D3736;
 }
