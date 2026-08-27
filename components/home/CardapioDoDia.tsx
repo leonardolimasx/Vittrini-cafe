@@ -8,14 +8,19 @@ export default function CardapioDoDia() {
 
   useEffect(() => {
     async function buscarCardapio() {
-      // O Supabase é chamado apenas no navegador do usuário
       const supabase = createClient()
       
-      const { data } = await supabase
+      // O truque do '*' evita que o banco quebre se faltar alguma coluna
+      const { data, error } = await supabase
         .from('cardapio_dia')
-        .select('nome_prato, foto_url, preco, preco_kg, preco_marmita_p, preco_marmita_m, preco_marmita_g')
+        .select('*')
         .limit(1)
         .maybeSingle()
+
+      if (error) {
+        // Se o problema for segurança (RLS), isso vai aparecer no seu F12!
+        console.error("ERRO DO SUPABASE:", error.message)
+      }
 
       if (data) {
         setCardapio(data)
