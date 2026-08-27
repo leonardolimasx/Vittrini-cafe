@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import CardapioForm from '@/components/home/admin/CardapioForm'
-
+export const dynamic = 'force-dynamic'
 export default function AdminPage() {
   const [carregando, setCarregando] = useState(true)
   const [cardapio, setCardapio] = useState<any>(null)
