@@ -1,16 +1,29 @@
-import { unstable_noStore as noStore } from 'next/cache'
-import { createClient } from '@/lib/supabase/server'
+'use client'
 
-export default async function CardapioDoDia() {
-  noStore() 
-  
-  const supabase = await createClient()
+import { useState, useEffect } from 'react'
+import { createClient } from '@/lib/supabase/client'
 
-  const { data: cardapio } = await supabase
-    .from('cardapio_dia')
-    .select('nome_prato, foto_url, preco, preco_kg, preco_marmita_p, preco_marmita_m, preco_marmita_g')
-    .limit(1)
-    .maybeSingle()
+export default function CardapioDoDia() {
+  const [cardapio, setCardapio] = useState<any>(null)
+
+  useEffect(() => {
+    async function buscarCardapio() {
+      // O Supabase é chamado apenas no navegador do usuário
+      const supabase = createClient()
+      
+      const { data } = await supabase
+        .from('cardapio_dia')
+        .select('nome_prato, foto_url, preco, preco_kg, preco_marmita_p, preco_marmita_m, preco_marmita_g')
+        .limit(1)
+        .maybeSingle()
+
+      if (data) {
+        setCardapio(data)
+      }
+    }
+
+    buscarCardapio()
+  }, [])
 
   return (
     <section className="py-16 bg-white font-sans">
@@ -38,7 +51,7 @@ export default async function CardapioDoDia() {
               {cardapio?.nome_prato || 'Cardápio em atualização...'}
             </h3>
             
-            {/* Bloco de Preços Principais (Com destaque verde) */}
+            {/* Bloco de Preços Principais */}
             <div className="grid grid-cols-2 gap-2 border-t border-stone-200 pt-4 mt-2">
               <div className="text-center">
                 <p className="text-xs text-stone-500 uppercase font-semibold tracking-wider">Prato do Dia</p>
@@ -54,7 +67,7 @@ export default async function CardapioDoDia() {
               </div>
             </div>
 
-            {/* Bloco das Marmitas (Com destaque verde) */}
+            {/* Bloco das Marmitas */}
             <div className="border-t border-stone-200 pt-3 mt-4">
               <p className="text-xs text-stone-500 uppercase font-semibold tracking-wider mb-2">Marmitas</p>
               <div className="flex justify-center gap-6 text-sm">
