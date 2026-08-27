@@ -2,8 +2,8 @@ export default function Hero() {
   return (
     <div className="w-full flex flex-col">
       {/* Abas de Navegação Fixas no Topo */}
-      <nav className="bg-[#132422] text-white py-4 px-4 sticky top-0 z-50 shadow-md">
-        <ul className="flex flex-wrap justify-center gap-4 md:gap-8 text-sm md:text-base font-semibold font-sans">
+      <nav className="bg-[#132422] text-white py-4 px-4 sticky top-0 z-50 shadow-md font-sans">
+        <ul className="flex flex-wrap justify-center gap-4 md:gap-8 text-sm md:text-base font-semibold">
           <li><a href="#" className="hover:text-[#7ba59a] transition">Início</a></li>
           <li><a href="#cardapio" className="hover:text-[#7ba59a] transition">Sugestão do Dia</a></li>
           <li><a href="#cafe" className="hover:text-[#7ba59a] transition text-[#7ba59a]">Novo Café</a></li>
@@ -13,20 +13,26 @@ export default function Hero() {
         </ul>
       </nav>
 
-      {/* Letreiro Principal Limpo e Elegante */}
-      <div className="bg-[#1c3532] py-24 px-4 text-center text-white flex flex-col items-center">
-        
-        <div className="mb-10 flex flex-col items-center">
-          <span className="text-6xl md:text-8xl font-extrabold text-[#7ba59a] tracking-widest drop-shadow-lg mb-4">
+      {/* Letreiro Principal com a Foto de Fundo do Restaurante */}
+      <div 
+        className="relative py-28 px-4 text-center text-white flex flex-col items-center justify-center bg-cover bg-center"
+        style={{ backgroundImage: `url('/fundo-restaurante.jpg')` }}
+      >
+        {/* Camada escura por cima da foto para destacar o texto */}
+        <div className="absolute inset-0 bg-[#0f1f1d]/80 backdrop-blur-[2px]"></div>
+
+        {/* Conteúdo do Letreiro (Fica acima da camada escura) */}
+        <div className="relative z-10 mb-8 flex flex-col items-center">
+          <span className="text-6xl md:text-8xl font-extrabold text-[#9ec4bc] tracking-wider drop-shadow-2xl mb-2 font-serif">
             VITTRINI
           </span>
-          <span className="text-3xl md:text-4xl font-light tracking-wider text-stone-300 italic">
-            Restaurante e Café
+          <span className="text-2xl md:text-3xl font-light tracking-widest text-stone-200 uppercase">
+            Restaurante & Café
           </span>
         </div>
         
         {/* Endereço e Horários */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-sm md:text-base text-stone-300 mt-4 bg-[#152a27] py-3 px-6 rounded-full shadow-inner font-sans">
+        <div className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-sm md:text-base text-stone-200 bg-[#132422]/90 border border-[#7ba59a]/30 py-3 px-6 rounded-full shadow-lg font-sans backdrop-blur-md">
           <span className="flex items-center gap-2">
             📍 Praça Gabriel Botelho, 66 — Botelhos/MG
           </span>

@@ -19,7 +19,6 @@ export default function CardapioForm({
   precoMarmitaPAtual, precoMarmitaMAtual, precoMarmitaGAtual 
 }: Props) {
   
-  // Função rápida para tirar o "R$" que vem do banco de dados e deixar a caixinha limpa
   const limparRS = (valor: string | null) => valor ? valor.replace(/R\$\s?/g, '').trim() : ''
 
   const [nome, setNome] = useState(nomeAtual)
@@ -61,7 +60,6 @@ export default function CardapioForm({
       fotoUrl = publicUrlData.publicUrl
     }
 
-    // Função que coloca o "R$ " de volta antes de salvar no banco
     const formatarPreco = (valor: string) => valor ? `R$ ${valor}` : ''
 
     const { error } = await supabase
@@ -92,7 +90,7 @@ export default function CardapioForm({
           required
           value={nome}
           onChange={(e) => setNome(e.target.value)}
-          className="mt-1 w-full rounded-lg border border-stone-300 px-3 py-2 focus:border-terracota-500 focus:ring-terracota-500"
+          className="mt-1 w-full rounded-lg border border-stone-300 px-3 py-2 text-stone-800 font-sans focus:border-terracota-500 focus:ring-terracota-500"
         />
       </div>
 
@@ -100,28 +98,28 @@ export default function CardapioForm({
       <div className="grid grid-cols-2 gap-3">
         <div>
           <label className="block text-xs font-semibold text-stone-700">Prato do Dia</label>
-          <div className="relative mt-1">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-500 text-sm font-medium">R$</span>
+          <div className="relative mt-1 flex items-center">
+            <span className="absolute left-3 text-stone-500 text-sm font-medium">R$</span>
             <input
               type="text"
               placeholder="25,00"
               value={preco}
               onChange={(e) => setPreco(e.target.value)}
-              className="w-full rounded-lg border border-stone-300 pl-9 pr-2 py-2 text-sm focus:border-terracota-500 focus:ring-terracota-500"
+              className="w-full rounded-lg border border-stone-300 pl-9 pr-2 py-2 text-base font-semibold text-stone-800 font-sans focus:border-terracota-500 focus:ring-terracota-500"
             />
           </div>
         </div>
         
         <div>
           <label className="block text-xs font-semibold text-stone-700">Preço KG</label>
-          <div className="relative mt-1">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-500 text-sm font-medium">R$</span>
+          <div className="relative mt-1 flex items-center">
+            <span className="absolute left-3 text-stone-500 text-sm font-medium">R$</span>
             <input
               type="text"
               placeholder="59,90"
               value={precoKg}
               onChange={(e) => setPrecoKg(e.target.value)}
-              className="w-full rounded-lg border border-stone-300 pl-9 pr-2 py-2 text-sm focus:border-terracota-500 focus:ring-terracota-500"
+              className="w-full rounded-lg border border-stone-300 pl-9 pr-2 py-2 text-base font-semibold text-stone-800 font-sans focus:border-terracota-500 focus:ring-terracota-500"
             />
           </div>
         </div>
@@ -134,42 +132,42 @@ export default function CardapioForm({
           
           <div>
             <label className="block text-[10px] text-stone-500 font-bold mb-1 text-center">PEQUENA</label>
-            <div className="relative">
-              <span className="absolute left-2 top-1/2 -translate-y-1/2 text-stone-500 text-xs font-medium">R$</span>
+            <div className="relative flex items-center">
+              <span className="absolute left-2 text-stone-500 text-xs font-medium">R$</span>
               <input
                 type="text"
                 placeholder="15,00"
                 value={precoMarmitaP}
                 onChange={(e) => setPrecoMarmitaP(e.target.value)}
-                className="w-full rounded-md border border-stone-300 pl-7 pr-1 py-2 text-xs focus:border-terracota-500 focus:ring-terracota-500"
+                className="w-full rounded-md border border-stone-300 pl-7 pr-1 py-1.5 text-sm font-semibold text-stone-800 font-sans focus:border-terracota-500 focus:ring-terracota-500"
               />
             </div>
           </div>
 
           <div>
             <label className="block text-[10px] text-stone-500 font-bold mb-1 text-center">MÉDIA</label>
-            <div className="relative">
-              <span className="absolute left-2 top-1/2 -translate-y-1/2 text-stone-500 text-xs font-medium">R$</span>
+            <div className="relative flex items-center">
+              <span className="absolute left-2 text-stone-500 text-xs font-medium">R$</span>
               <input
                 type="text"
                 placeholder="18,00"
                 value={precoMarmitaM}
                 onChange={(e) => setPrecoMarmitaM(e.target.value)}
-                className="w-full rounded-md border border-stone-300 pl-7 pr-1 py-2 text-xs focus:border-terracota-500 focus:ring-terracota-500"
+                className="w-full rounded-md border border-stone-300 pl-7 pr-1 py-1.5 text-sm font-semibold text-stone-800 font-sans focus:border-terracota-500 focus:ring-terracota-500"
               />
             </div>
           </div>
 
           <div>
             <label className="block text-[10px] text-stone-500 font-bold mb-1 text-center">GRANDE</label>
-            <div className="relative">
-              <span className="absolute left-2 top-1/2 -translate-y-1/2 text-stone-500 text-xs font-medium">R$</span>
+            <div className="relative flex items-center">
+              <span className="absolute left-2 text-stone-500 text-xs font-medium">R$</span>
               <input
                 type="text"
                 placeholder="22,00"
                 value={precoMarmitaG}
                 onChange={(e) => setPrecoMarmitaG(e.target.value)}
-                className="w-full rounded-md border border-stone-300 pl-7 pr-1 py-2 text-xs focus:border-terracota-500 focus:ring-terracota-500"
+                className="w-full rounded-md border border-stone-300 pl-7 pr-1 py-1.5 text-sm font-semibold text-stone-800 font-sans focus:border-terracota-500 focus:ring-terracota-500"
               />
             </div>
           </div>
@@ -177,7 +175,7 @@ export default function CardapioForm({
         </div>
       </div>
 
-      {/* BOTÃO DA FOTO BONITÃO */}
+      {/* BOTÃO DA FOTO */}
       <div>
         <label className="block text-sm font-semibold text-stone-700 mb-2">Foto do Prato</label>
         <label className="flex flex-col items-center justify-center w-full h-28 border-2 border-stone-300 border-dashed rounded-xl cursor-pointer bg-white hover:bg-stone-50 hover:border-terracota-500 transition">
@@ -187,7 +185,6 @@ export default function CardapioForm({
               {arquivo ? arquivo.name : "Clique para escolher a foto"}
             </p>
           </div>
-          {/* O input de verdade fica escondido aqui */}
           <input
             type="file"
             accept="image/*"
