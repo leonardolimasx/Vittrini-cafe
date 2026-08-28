@@ -8,29 +8,24 @@ export default function CardapioDoDia() {
   const [carregando, setCarregando] = useState(true)
 
   useEffect(() => {
-    console.log("🚀 AGORA O FOGUETE VAI SUBIR!")
-
     async function buscarCardapio() {
-      try {
-        const supabase = createClient()
-        
-        const { data, error } = await supabase
-          .from('cardapio_dia')
-          .select('*')
-          .limit(1)
-          .maybeSingle()
+      const supabase = createClient()
+      
+      // Buscando a tabela inteira sem filtros restritos para testar
+      const { data, error } = await supabase
+        .from('cardapio_dia')
+        .select('*')
 
-        console.log("DADOS RETORNADOS:", data)
-        if (error) console.error("ERRO:", error)
+      console.log("🔥 RESUMO DA BUSCA NO SUPABASE:", { data, error })
 
-        if (data) {
-          setCardapio(data)
-        }
-      } catch (err) {
-        console.error("ERRO FATAL:", err)
-      } finally {
-        setCarregando(false)
+      if (data && data.length > 0) {
+        console.log("✅ Prato encontrado com sucesso:", data[0])
+        setCardapio(data[0])
+      } else {
+        console.log("❌ A tabela voltou vazia ou deu erro:", error)
       }
+      
+      setCarregando(false)
     }
 
     buscarCardapio()
