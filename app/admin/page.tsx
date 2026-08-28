@@ -20,12 +20,12 @@ export default function AdminPage() {
         return
       }
 
-      // Busca o prato atual cadastrado no banco para pegar o ID real
+      // Pega o primeiro registro da tabela independentemente do tipo de ID
       const { data, error } = await supabase
         .from('cardapio_dia')
         .select('*')
         .limit(1)
-        .single()
+        .maybeSingle()
 
       if (data) {
         setCardapioData(data)
@@ -54,9 +54,9 @@ export default function AdminPage() {
             fotoAtualUrl={cardapioData.foto_url}
             precoAtual={cardapioData.preco}
             precoKgAtual={cardapioData.preco_kg}
-            precoMarmitaPAtual={cardapioData.preco_marmita_p}
-            precoMarmitaMAtual={cardapioData.preco_marmita_m}
-            precoMarmitaGAtual={cardapioData.preco_marmita_g}
+            precoMarmitaPAtual={cardapioData.preco_marmita_p || "18,00"}
+            precoMarmitaMAtual={cardapioData.preco_marmita_m || "20,00"}
+            precoMarmitaGAtual={cardapioData.preco_marmita_g || "22,00"}
           />
         ) : (
           <p className="text-center text-stone-500">Nenhum prato encontrado na tabela do banco.</p>
