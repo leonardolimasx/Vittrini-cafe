@@ -1,24 +1,42 @@
 export default function Sobre() {
   return (
-    <section id="sobre" className="py-16 px-4 bg-stone-50 font-sans">
-      <div className="max-w-4xl mx-auto text-center">
+    <section id="sobre" className="py-20 px-6 bg-stone-50 font-sans">
+      <div className="max-w-6xl mx-auto">
         
-        {/* Título alterado para Sobre Nós */}
-        <h2 className="text-3xl md:text-4xl font-bold font-serif text-stone-800 mb-6">
-          Sobre Nós
-        </h2>
+        {/* Cabeçalho da Seção */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold font-serif text-stone-800 mb-4">
+            Sobre Nós
+          </h2>
+          <div className="w-16 h-1 bg-amber-600 mx-auto rounded-full"></div>
+        </div>
 
-        {/* Linha decorativa elegante */}
-        <div className="w-16 h-1 bg-terracota-600 mx-auto mb-8 rounded-full"></div>
+        {/* Conteúdo com Foto e Texto */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          
+          {/* Espaço para a Foto */}
+          <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3] bg-stone-200 border-4 border-white">
+            {/* Dica: Quando tiver a foto, basta trocar o src da tag img abaixo ou usar o componente Image do Next.js */}
+            <img 
+              src="/images/sobre-equipe.jpg" 
+              alt="Nossa equipe e espaço" 
+              className="w-full h-full object-cover"
+            />
+          </div>
 
-        {/* Texto institucional (você pode alterar para a história do Vittrini) */}
-        <div className="space-y-4 text-stone-600 text-lg leading-relaxed">
-          <p>
-            O Vittrini nasceu da paixão por proporcionar momentos especiais através de uma culinária acolhedora, saborosa e feita com ingredientes selecionados. 
-          </p>
-          <p>
-            Nosso compromisso é oferecer pratos do dia irresistíveis, marmitas preparadas com todo o cuidado e um ambiente onde cada cliente se sinta em casa.
-          </p>
+          {/* Texto Institucional */}
+          <div className="space-y-6">
+            <h3 className="text-2xl font-serif font-bold text-stone-800">
+              Tradição, Sabor e Acolhimento
+            </h3>
+            <p className="text-stone-600 text-lg leading-relaxed">
+              O Vittrini nasceu da paixão por proporcionar momentos especiais através de uma culinária acolhedora, saborosa e feita com ingredientes selecionados com todo o carinho.
+            </p>
+            <p className="text-stone-600 leading-relaxed">
+              Nosso compromisso diário é oferecer pratos do dia irresistíveis, marmitas preparadas com rigor e um ambiente onde cada cliente se sinta verdadeiramente em casa.
+            </p>
+          </div>
+
         </div>
 
       </div>
