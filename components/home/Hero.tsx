@@ -7,7 +7,7 @@ export default function Hero() {
           <li><a href="#" className="hover:text-[#7ba59a] transition">Início</a></li>
           <li><a href="#cardapio" className="hover:text-[#7ba59a] transition">Sugestão do Dia</a></li>
           <li><a href="#cafe" className="hover:text-[#7ba59a] transition text-[#7ba59a]">Novo Café</a></li>
-          <li><a href="#equipe" className="hover:text-[#7ba59a] transition">Nossa Equipe</a></li>
+          <li><a href="#sobre nos" className="hover:text-[#7ba59a] transition">Sobre Nós</a></li>
           <li><a href="#localizacao" className="hover:text-[#7ba59a] transition">Localização</a></li>
           <li><a href="#tour" className="hover:text-[#7ba59a] transition">Tour 360º</a></li>
         </ul>
