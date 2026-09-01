@@ -14,8 +14,8 @@ export default function Sobre() {
         {/* Conteúdo com Foto e Texto */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
-          {/* Espaço para a Foto */}
-          <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3] bg-stone-200 border-4 border-white">
+          {/* Espaço para a Foto (Borda branca removida) */}
+          <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
             <img 
               src="/sobre-equipe.jpg" 
               alt="Nossa equipe e espaço" 
