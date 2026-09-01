@@ -16,9 +16,8 @@ export default function Sobre() {
           
           {/* Espaço para a Foto */}
           <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3] bg-stone-200 border-4 border-white">
-            {/* Dica: Quando tiver a foto, basta trocar o src da tag img abaixo ou usar o componente Image do Next.js */}
             <img 
-              src="/images/sobre-equipe.jpg" 
+              src="/sobre-equipe.jpg" 
               alt="Nossa equipe e espaço" 
               className="w-full h-full object-cover"
             />
