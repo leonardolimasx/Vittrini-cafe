@@ -1,7 +1,7 @@
 import Hero from '@/components/home/Hero'
 import CardapioDoDia from '@/components/home/CardapioDoDia'
 import NovoCafe from '@/components/home/NovoCafe'
-import Equipe from '@/components/home/Equipe'
+import Sobre from '@/components/home/Sobre'
 import Localizacao from '@/components/home/Localizacao'
 import TourVirtual from '@/components/home/TourVirtual'
 
@@ -18,8 +18,8 @@ export default function HomePage() {
         <NovoCafe />
       </div>
 
-      <div id="equipe">
-        <Equipe />
+      <div id="sobre nos">
+        <Sobre />
       </div>
 
       <div id="localizacao">
