@@ -1,36 +1,26 @@
-export default function Equipe() {
+export default function Sobre() {
   return (
-    <section className="py-16 bg-stone-100">
-      <div className="container mx-auto px-4 max-w-5xl">
-        <div className="flex flex-col md:flex-row items-center gap-10 bg-white rounded-3xl shadow-xl overflow-hidden border border-stone-200">
-          
-          {/* Imagem Fixa da Equipe */}
-          <div className="w-full md:w-1/2 h-80 md:h-full min-h-[400px] bg-stone-200">
-            {/* O Next.js busca as imagens fixas na pasta "public" */}
-            <img 
-              src="/equipe.jpg" 
-              alt="Equipe Vittrini" 
-              className="w-full h-full object-cover"
-            />
-          </div>
+    <section id="sobre" className="py-16 px-4 bg-stone-50 font-sans">
+      <div className="max-w-4xl mx-auto text-center">
+        
+        {/* Título alterado para Sobre Nós */}
+        <h2 className="text-3xl md:text-4xl font-bold font-serif text-stone-800 mb-6">
+          Sobre Nós
+        </h2>
 
-          {/* Texto que você mandou */}
-          <div className="w-full md:w-1/2 p-8 md:pr-12 flex flex-col justify-center">
-            <h2 className="text-3xl font-bold text-terracota-800 mb-6 leading-tight">
-              Feitos de pessoas, unidos por um propósito
-            </h2>
-            
-            <div className="space-y-4 text-stone-600 leading-relaxed text-justify">
-              <p>
-                Por trás de cada prato, cada sorriso e cada momento vivido aqui, existe uma equipe que trabalha com dedicação, carinho e muita união.
-              </p>
-              <p>
-                Mais do que colegas de trabalho, somos uma família. Cada pessoa tem um papel especial e, juntos, colocamos amor em tudo o que fazemos. É essa parceria, esse cuidado e essa vontade de fazer sempre o melhor que tornam o nosso restaurante tão especial.
-              </p>
-            </div>
-          </div>
+        {/* Linha decorativa elegante */}
+        <div className="w-16 h-1 bg-terracota-600 mx-auto mb-8 rounded-full"></div>
 
+        {/* Texto institucional (você pode alterar para a história do Vittrini) */}
+        <div className="space-y-4 text-stone-600 text-lg leading-relaxed">
+          <p>
+            O Vittrini nasceu da paixão por proporcionar momentos especiais através de uma culinária acolhedora, saborosa e feita com ingredientes selecionados. 
+          </p>
+          <p>
+            Nosso compromisso é oferecer pratos do dia irresistíveis, marmitas preparadas com todo o cuidado e um ambiente onde cada cliente se sinta em casa.
+          </p>
         </div>
+
       </div>
     </section>
   )
